@@ -7,6 +7,8 @@ TagManager:
   - dialog_content
   - dialog_name
   - dialog_canvas
+  - tenpoints_disabled
+  - tenpoints_startpos
   layers:
   - Default
   - TransparentFX
