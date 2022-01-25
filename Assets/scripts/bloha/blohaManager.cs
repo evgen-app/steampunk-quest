@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 
 public class blohaManager : MonoBehaviour
 {
@@ -74,6 +75,8 @@ public class blohaManager : MonoBehaviour
     }
     public void chestOpen()
     {
+        PlayerPrefs.SetInt("chest" + PlayerPrefs.GetInt("chestNumber").ToString(), 1);
+        SceneManager.UnloadScene("BlohaGame");
         //происходит то, чтобы сундук открывался
     }
 

@@ -399,10 +399,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 75246280}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81c0b64f94a81e94886e5005c65e99f0, type: 3}
+  m_Script: {fileID: 11500000, guid: dab654a67fe5d1047b3d81276a3657ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   chests:
+  - {fileID: 3948254973102075788, guid: cdaa7b14c6cb18f4680e5cd924266aa1, type: 3}
   - {fileID: 3948254973102075788, guid: cdaa7b14c6cb18f4680e5cd924266aa1, type: 3}
   - {fileID: 3948254973102075788, guid: cdaa7b14c6cb18f4680e5cd924266aa1, type: 3}
   - {fileID: 3948254973102075788, guid: cdaa7b14c6cb18f4680e5cd924266aa1, type: 3}
@@ -759,7 +760,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 26ac95b39d9606f458d71e8124f0df60, type: 3}
+    m_Font: {fileID: 12800000, guid: be643c0c6aa10b54f849c7fa2b29a222, type: 3}
     m_FontSize: 72
     m_FontStyle: 1
     m_BestFit: 0

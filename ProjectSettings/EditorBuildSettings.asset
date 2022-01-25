@@ -7,10 +7,10 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/ARChests.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    guid: 75482a0f589bdbb43b643b86db007ff2
   - enabled: 1
     path: Assets/Scenes/BlohaGame.unity
     guid: d53696797a36207468fa47a07b391a49
   m_configObjects:
-    UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 6123958850c85ba48a84fa69271a85e5, type: 2}
-    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 5377990f65cc84149b6086468a865dd5, type: 2}
+    UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: f2a74ebf3b276024987c2be0a0fe966f, type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 26d18bbb39535bc499c664b852ace449, type: 2}
