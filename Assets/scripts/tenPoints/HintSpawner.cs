@@ -17,6 +17,7 @@ public class HintSpawner : MonoBehaviour
   List<GameObject> _notCheckedButtons;
 
   void Start() {
+    activeButton = null;
     _notCheckedButtons = new List<GameObject>();
     _cellOperator = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CellSpawnAndOperate>();
     _activeButtonSpawner = GameObject.FindGameObjectWithTag("tenpoints_activeButtonSpawner");
@@ -27,6 +28,7 @@ public class HintSpawner : MonoBehaviour
     int counter = 0;
     double minDist = Mathf.Infinity;
     foreach(GameObject point in _notCheckedButtons) {
+      if (point == null) continue;
       double dist = Vector3.Distance(point.transform.position, activeButton.transform.position);
       if (dist < minDist) {
         idx = counter;
@@ -54,8 +56,9 @@ public class HintSpawner : MonoBehaviour
 
   void Update() {
     _notCheckedButtons = _cellOperator.getNotCheckedButtons();
-    if (!activeButton) return;
+    if (activeButton == null) return;
     int idx = NearestGameObject();
+    if (idx == -1) return;
     if (_idxBuffer == idx) {
       return;
     }
@@ -67,7 +70,6 @@ public class HintSpawner : MonoBehaviour
   }
 
   public Vector3 destroyHintAndReturnItsPosition() {
-    Debug.Log(_hint.transform.position);
     Vector3 hint_position = _hint.transform.position;
     Destroy(_hint);
     _hint = null;

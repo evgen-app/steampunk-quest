@@ -19,6 +19,9 @@ public class CrossButtonHandler : MonoBehaviour
     _pointSpawner = Object.FindObjectOfType<activePointSpawner>(); 
   }
   void Update() {
+    if (active) {
+      Debug.Log(active);
+    }
     if (Input.GetMouseButtonDown(0)) {
       if (Vector3.Distance(Input.mousePosition, gameObject.transform.position) < 100){
         active = true;

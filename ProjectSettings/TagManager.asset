@@ -9,6 +9,8 @@ TagManager:
   - dialog_canvas
   - tenpoints_disabled
   - tenpoints_startpos
+  - tenpoints_activeButtonSpawner
+  - tenpoints_tagget
   layers:
   - Default
   - TransparentFX
