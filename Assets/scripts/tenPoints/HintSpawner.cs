@@ -49,6 +49,7 @@ public class HintSpawner : MonoBehaviour
       _hint.transform.SetParent(canv.gameObject.transform); 
       activeButton.GetComponent<CrossButtonHandler>().isSpawnerHint = false;
     }
+    activeButton.transform.SetSiblingIndex(activeButton.transform.parent.childCount);
   }
 
   void Update() {
