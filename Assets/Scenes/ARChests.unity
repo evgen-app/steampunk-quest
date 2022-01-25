@@ -399,16 +399,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 75246280}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81c0b64f94a81e94886e5005c65e99f0, type: 3}
+  m_Script: {fileID: 11500000, guid: dab654a67fe5d1047b3d81276a3657ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   chests:
   - {fileID: 3948254973102075788, guid: cdaa7b14c6cb18f4680e5cd924266aa1, type: 3}
-  - {fileID: 3948254973102075788, guid: cdaa7b14c6cb18f4680e5cd924266aa1, type: 3}
-  - {fileID: 3948254973102075788, guid: cdaa7b14c6cb18f4680e5cd924266aa1, type: 3}
-  - {fileID: 3948254973102075788, guid: cdaa7b14c6cb18f4680e5cd924266aa1, type: 3}
+  - {fileID: 3948254973102075788, guid: e04d74882132bb54d9dd31401f51bd42, type: 3}
   chestWidthLamp: {fileID: 3948254973102075788, guid: e04d74882132bb54d9dd31401f51bd42, type: 3}
-  button: {fileID: 34072745}
+  button: {fileID: 2075150839}
 --- !u!1 &117754087
 GameObject:
   m_ObjectHideFlags: 0
