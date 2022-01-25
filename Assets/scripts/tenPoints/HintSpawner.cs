@@ -10,7 +10,6 @@ public class HintSpawner : MonoBehaviour
   private GameObject _hint;
   [SerializeField]
   private GameObject _spawnerHint;
-  private GameObject _activeButtonSpawner;
   [SerializeField]
   private GameObject _hintUi;
   private int _idxBuffer = -1;
@@ -19,7 +18,6 @@ public class HintSpawner : MonoBehaviour
   void Start() {
     _notCheckedButtons = new List<GameObject>();
     _cellOperator = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CellSpawnAndOperate>();
-    _activeButtonSpawner = GameObject.FindGameObjectWithTag("tenpoints_activeButtonSpawner");
   }
 
   int NearestGameObject() {
@@ -27,6 +25,7 @@ public class HintSpawner : MonoBehaviour
     int counter = 0;
     double minDist = Mathf.Infinity;
     foreach(GameObject point in _notCheckedButtons) {
+      if (point == null) continue;
       double dist = Vector3.Distance(point.transform.position, activeButton.transform.position);
       if (dist < minDist) {
         idx = counter;
@@ -54,7 +53,7 @@ public class HintSpawner : MonoBehaviour
 
   void Update() {
     _notCheckedButtons = _cellOperator.getNotCheckedButtons();
-    if (!activeButton) return;
+    if (activeButton == null) return;
     int idx = NearestGameObject();
     if (_idxBuffer == idx) {
       return;
