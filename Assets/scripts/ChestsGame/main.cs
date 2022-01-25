@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 using UnityEngine.UI;
 using System.Linq;
+using System;
 public class main : MonoBehaviour
 {
-    // Start is called before the first frame update
     [SerializeField] List<GameObject> chests;
     [SerializeField] GameObject chestWidthLamp;
     [SerializeField] GameObject button;
@@ -34,6 +35,7 @@ public class main : MonoBehaviour
     }
     private void spawnChests(Vector3 hitPos)
     {
+         GameObject obj;
         List<Vector3> cords = new List<Vector3>{
             new Vector3(hitPos.x + 0.7f, hitPos.y, hitPos.z + 0.2f),
             new Vector3(hitPos.x - 0.7f, hitPos.y, hitPos.z + 0.2f),
@@ -42,16 +44,17 @@ public class main : MonoBehaviour
             new Vector3(hitPos.x , hitPos.y, hitPos.z)
         };
         for (int i = 0; i <= cords.Count+1; i++) { 
-            GameObject chest = chests[Random.Range(0, chests.Count)];
+            GameObject chest = chests[UnityEngine.Random.Range(0, chests.Count)];
             //GameObject chest = chests[0];
-            Debug.Log(cords.Count);
 
 
-            int index = Random.Range(0, cords.Count-1);
-            Instantiate(chest, position: cords[index], rotation: new Quaternion());
+            int index = UnityEngine.Random.Range(0, cords.Count-1);
+            obj = Instantiate(chest, position: cords[index], rotation: new Quaternion());
+            obj.name = "chest" + i.ToString();
             cords.RemoveAt(index);
         }
-        Instantiate(chestWidthLamp, position: cords[0], rotation: new Quaternion());
+         obj = Instantiate(chestWidthLamp, position: cords[0], rotation: new Quaternion());
+        obj.name = "chest 5";
 
     }
     private void detectPLanes()
@@ -61,7 +64,7 @@ public class main : MonoBehaviour
 
         if (hits.Count == 0 && search == true)
         {
-            status.text = "Идет поиск плоскости" + string.Concat(Enumerable.Repeat(".", Random.RandomRange(1, 3)));
+            status.text = "Идет поиск плоскости" + string.Concat(Enumerable.Repeat(".", UnityEngine.Random.RandomRange(1, 3)));
         }
         else
         {
@@ -72,7 +75,6 @@ public class main : MonoBehaviour
                 spawnedchest = true;
                 spawnChests(hits[0].pose.position);
             }
-
         }
     }
     private void openChest()
@@ -90,7 +92,7 @@ public class main : MonoBehaviour
                     isTracking = true;
                     rayRecObj = raycastHit.collider.gameObject;
                     //устанавливаем подсветку объекта + добавляем кнопку открыть
-
+                    PlayerPrefs.SetInt("chestNumber", Convert.ToInt32(rayRecObj.name.Substring(5)));
                     rayRecObj.GetComponent<Outline>().enabled = true;
                     button.SetActive(true);
                     status.text = "chest";
@@ -119,5 +121,10 @@ public class main : MonoBehaviour
             button.SetActive(false);
 
         }
+    }
+    public void openBloha()
+    {
+        Debug.LogError("SCENE");
+        SceneManager.LoadScene("BlohaGame", LoadSceneMode.Additive);
     }
 }

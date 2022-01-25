@@ -7,6 +7,10 @@ TagManager:
   - dialog_content
   - dialog_name
   - dialog_canvas
+  - button
+  - chest
+  - aim
+  - ARCamera
   layers:
   - Default
   - TransparentFX
