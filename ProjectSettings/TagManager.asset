@@ -11,6 +11,10 @@ TagManager:
   - chest
   - aim
   - ARCamera
+  - tenpoints_disabled
+  - tenpoints_startpos
+  - chest
+  - tenpoints_tagget
   layers:
   - Default
   - TransparentFX
