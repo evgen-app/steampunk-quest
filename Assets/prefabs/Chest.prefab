@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 3948254973102075791}
   - component: {fileID: -6030418705777131346}
   - component: {fileID: 3276105321069666716}
+  - component: {fileID: 984409992584537297}
   m_Layer: 0
   m_Name: Chest
   m_TagString: chest
@@ -146,6 +147,18 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &984409992584537297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3948254973102075788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7052127bf8a3b7d48ac8fb91f5262e4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3948254973771866327
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,9 +250,9 @@ Animation:
   m_GameObject: {fileID: 3948254973771866327}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 6b97969f8218d4b45831e5d623be103b, type: 2}
+  m_Animation: {fileID: 0}
   m_Animations:
-  - {fileID: 7400000, guid: 6b97969f8218d4b45831e5d623be103b, type: 2}
+  - {fileID: 0}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
