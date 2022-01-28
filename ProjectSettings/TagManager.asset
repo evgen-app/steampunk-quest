@@ -16,6 +16,7 @@ TagManager:
   - chest
   - tenpoints_tagget
   - lamp
+  - status
   layers:
   - Default
   - TransparentFX

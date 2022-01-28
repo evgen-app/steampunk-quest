@@ -18,7 +18,7 @@ public class chestController : MonoBehaviour
             Debug.Log(gameObject.transform.GetChild(0).gameObject.name);
             PlayerPrefs.SetInt(gameObject.name, 2);
             gameObject.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
-            if (gameObject.name == "chest5")
+            if (gameObject.name == "chest4")
             {
                 gameObject.transform.Find("lamp").gameObject.SetActive(true);
             }

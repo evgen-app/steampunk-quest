@@ -26,7 +26,7 @@ public class main : MonoBehaviour
     void Start()
     {
         raycastManager = gameObject.GetComponent<ARRaycastManager>();
-        status = FindObjectOfType<Text>();
+        status = GameObject.FindGameObjectWithTag("status").GetComponent<Text>();
     }
 
     void Update()
@@ -55,7 +55,7 @@ public class main : MonoBehaviour
             cords.RemoveAt(index);
         }
          obj = Instantiate(chestWidthLamp, position: cords[0], rotation: new Quaternion());
-        obj.name = "chest5";
+        obj.name = "chest4";
 
     }
     private void detectPLanes()
