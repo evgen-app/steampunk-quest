@@ -10,42 +10,70 @@ public class DialogPlayer : MonoBehaviour
   AudioPlayer _audioPlayer;
   [SerializeField]
   AudioVisualizer _audioVisualizer;
-  private AudioClip _audio;
+  
+  DialogDataClass[] _dialogData;
+  
+  int _idx = 0;
+  Replica _currentReplica;
+
+  void changeDialogData(DialogDataClass[] dialogData){
+    _dialogData = dialogData;
+    _idx = 0;
+    _currentReplica = createReplica();
+    _currentReplica.Play();
+  }
+
+  void playReplica(int idx) {
+    if (idx >= DialogData.FirstScene.Length) return;
+    //Debug.Log(idx.ToString() + DialogData.FirstScene[idx].text);
+
+    Replica replica = new Replica(
+      DialogData.FirstScene[idx].audio,
+      new AudioVisualizer.AudioVisualizerData(
+        text: _dialogData[idx].text,
+        role: _dialogData[idx].role
+      ),      
+      _audioPlayer,
+      () => {
+        Debug.Log(idx);
+        playReplica(idx+1);
+      },
+      _audioVisualizer
+    );
+    replica.Play();
+  }
+
+  Replica createReplica() {
+    Replica replica = new Replica(
+      _dialogData[_idx].audio,
+      new AudioVisualizer.AudioVisualizerData(
+        text: _dialogData[_idx].text,
+        role: _dialogData[_idx].role
+      ),      
+      _audioPlayer,
+      () => {},
+      _audioVisualizer
+    );
+    return replica;
+  }
+  
   void Start()
   {
-    _audio = Resources.Load<AudioClip>("audio/пилот/есть");
-    Replica another_rep = new Replica(
-      _audio,
-      new AudioVisualizer.AudioVisualizerData(
-        "asdfsadf",
-        role: Roles.PILOT
-      ),
-      _audioPlayer,
-
-      () => {
-        Debug.Log("fuck");
-      },
-      _audioVisualizer
-    );
-    Replica rep = new Replica(
-      _audio,
-      new AudioVisualizer.AudioVisualizerData(
-        "Есть",
-        role: Roles.PILOT
-      ),
-      _audioPlayer,
-
-      () => {
-        another_rep.Play();
-      },
-      _audioVisualizer
-    );
-    rep.Play();
+    _dialogData = DialogData.FirstScene;
+    _audioPlayer = Object.FindObjectOfType<AudioPlayer>();
+    _audioVisualizer = Object.FindObjectOfType<AudioVisualizer>();
+    _currentReplica = createReplica();
+    _currentReplica.Play();  
   }
 
   // Update is called once per frame
   void Update()
   {
-      
+    if (_idx >= _dialogData.Length-1) return;
+    if (_currentReplica.getIsEnded()) {
+      _idx++;
+      _currentReplica = createReplica();
+      _currentReplica.Play();
+    }
   }
 }
