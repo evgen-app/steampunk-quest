@@ -10,6 +10,7 @@ public class AudioPlayer : MonoBehaviour
   private bool _play;
   void Awake()
   {
+    Debug.Log("fuck you");
     _audioPlayer = gameObject.GetComponent<AudioSource>();
     _stopsCommits = new List<AudioPlayerStopsCommit>();
   }
