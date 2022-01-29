@@ -7,9 +7,9 @@ public class AudioPlayer : MonoBehaviour
   public delegate void AudioPlayerStopsCommit();
   private AudioSource _audioPlayer;
   private List<AudioPlayerStopsCommit> _stopsCommits;
+  private bool _play;
   void Awake()
   {
-    Debug.Log("shit");
     _audioPlayer = gameObject.GetComponent<AudioSource>();
     _stopsCommits = new List<AudioPlayerStopsCommit>();
   }
@@ -20,15 +20,20 @@ public class AudioPlayer : MonoBehaviour
 
   public void PlayAudio(AudioClip audio) {
     _audioPlayer.clip = audio;
-    _audioPlayer.Play();    
+    _audioPlayer.Play();
+    _play = true;  
   }
 
   void Update() {
-    if (!_audioPlayer.isPlaying) {
+    if (!_audioPlayer.isPlaying && _play) {
+      Debug.Log(_stopsCommits.Count.ToString() + "commits");
       for (int i = 0; i < _stopsCommits.Count; ++i) {
+        if (_stopsCommits[i] == null) continue;
         _stopsCommits[i]();
+        _stopsCommits[i] = null;
       }
       _stopsCommits = new List<AudioPlayerStopsCommit>();
+      _play = false;
     }
   }
 }
