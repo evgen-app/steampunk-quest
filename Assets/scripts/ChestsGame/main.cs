@@ -11,7 +11,9 @@ public class main : MonoBehaviour
 {
     [SerializeField] List<GameObject> chests;
     [SerializeField] GameObject chestWidthLamp;
-    [SerializeField] GameObject button;
+    [SerializeField] GameObject openChestButton;
+    [SerializeField] GameObject getLampButton;
+
 
     ARRaycastManager raycastManager;
     Text status;
@@ -24,18 +26,17 @@ public class main : MonoBehaviour
     void Start()
     {
         raycastManager = gameObject.GetComponent<ARRaycastManager>();
-        status = FindObjectOfType<Text>();
+        status = GameObject.FindGameObjectWithTag("status").GetComponent<Text>();
     }
 
     void Update()
     {
-       
         detectPLanes();
         openChest();
     }
     private void spawnChests(Vector3 hitPos)
     {
-         GameObject obj;
+        GameObject obj;
         List<Vector3> cords = new List<Vector3>{
             new Vector3(hitPos.x + 0.7f, hitPos.y, hitPos.z + 0.2f),
             new Vector3(hitPos.x - 0.7f, hitPos.y, hitPos.z + 0.2f),
@@ -54,7 +55,7 @@ public class main : MonoBehaviour
             cords.RemoveAt(index);
         }
          obj = Instantiate(chestWidthLamp, position: cords[0], rotation: new Quaternion());
-        obj.name = "chest 5";
+        obj.name = "chest4";
 
     }
     private void detectPLanes()
@@ -71,7 +72,7 @@ public class main : MonoBehaviour
             search = false;
             if (spawnedchest == false && hits.Count > 0)
             {
-                status.text = "spawned chest";
+                status.gameObject.SetActive(false);
                 spawnedchest = true;
                 spawnChests(hits[0].pose.position);
             }
@@ -82,10 +83,17 @@ public class main : MonoBehaviour
 
         Ray ray = new Ray(gameObject.transform.GetChild(0).transform.position, gameObject.transform.GetChild(0).transform.forward);
         RaycastHit raycastHit;
-        if (Physics.Raycast(ray, out raycastHit))
+        if (Physics.Raycast(ray, out raycastHit) && GameObject.FindGameObjectsWithTag("aim").Length  == 0)
         {
             status.text = "ray";
-            if (raycastHit.collider.gameObject.tag == "chest")
+            if (raycastHit.collider.gameObject.tag == "lamp")
+            {
+                rayRecObj = raycastHit.collider.gameObject;
+                rayRecObj.GetComponent<Outline>().enabled = true;
+                getLampButton.SetActive(true);
+            }
+
+            else if (raycastHit.collider.gameObject.tag == "chest")
             {
                 if (isTracking == false)
                 {
@@ -94,10 +102,8 @@ public class main : MonoBehaviour
                     //устанавливаем подсветку объекта + добавляем кнопку открыть
                     PlayerPrefs.SetInt("chestNumber", Convert.ToInt32(rayRecObj.name.Substring(5)));
                     rayRecObj.GetComponent<Outline>().enabled = true;
-                    button.SetActive(true);
-                    status.text = "chest";
+                    openChestButton.SetActive(true);
                 }
-                status.text = "chest";
 
                 //raycastHit.collider.gameObject.transform.GetChild(0).GetComponent<Renderer>().material.color = Color.green;
             }
@@ -116,15 +122,14 @@ public class main : MonoBehaviour
         {
             isTracking = false;
             //сбрасываем подсветку объекта + убираем кнопку открыть
-            status.text = "no chest";
             rayRecObj.GetComponent<Outline>().enabled = false;
-            button.SetActive(false);
+            openChestButton.SetActive(false);
+            getLampButton.SetActive(false);
 
         }
     }
     public void openBloha()
     {
-        Debug.LogError("SCENE");
         SceneManager.LoadScene("BlohaGame", LoadSceneMode.Additive);
     }
 }

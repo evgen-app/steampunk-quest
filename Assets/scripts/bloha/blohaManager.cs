@@ -76,6 +76,8 @@ public class blohaManager : MonoBehaviour
     public void chestOpen()
     {
         PlayerPrefs.SetInt("chest" + PlayerPrefs.GetInt("chestNumber").ToString(), 1);
+        Debug.Log(PlayerPrefs.GetInt("chest" + PlayerPrefs.GetInt("chestNumber").ToString()));
+        Debug.Log("chest" + PlayerPrefs.GetInt("chestNumber").ToString());
         SceneManager.UnloadScene("BlohaGame");
         //происходит то, чтобы сундук открывался
     }
