@@ -30,14 +30,4 @@ public class mapController : MonoBehaviour
         filter.SetActive(false);
 
     }
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
