@@ -17,6 +17,7 @@ TagManager:
   - tenpoints_tagget
   - lamp
   - status
+  - backdrop
   layers:
   - Default
   - TransparentFX
