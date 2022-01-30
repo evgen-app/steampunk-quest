@@ -18,10 +18,7 @@ public static class DialogData{
       "Подробности высланы вам на почту, проверьте",
       Roles.CAPTAIN,
       Resources.Load<AudioClip>("audio/капитан/подробности высланы")
-    )
-  };
-
-  public static DialogDataClass[] SecondSceneFirstAction = {
+    ),
     new DialogDataClass(
       "Файл доставлен, в нем обнаружены повреждения",
       Roles.VOICE_ASSISTANT,
@@ -32,6 +29,10 @@ public static class DialogData{
       Roles.PILOT,
       Resources.Load<AudioClip>("audio/пилот/о черт, опять этот баг")
     )
+  };
+
+  public static DialogDataClass[] SecondSceneFirstAction = {
+    
   };
   public static DialogDataClass[] SecondSceneSecondAction = {
     new DialogDataClass(

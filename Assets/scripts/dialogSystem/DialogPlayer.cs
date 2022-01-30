@@ -15,6 +15,10 @@ public class DialogPlayer : MonoBehaviour
   
   int _idx = 0;
   Replica _currentReplica;
+  bool _isDialogPlaying = true;
+  bool getIsDialogPlaying(){
+    return _isDialogPlaying;
+  }
 
   void changeDialogData(DialogDataClass[] dialogData){
     _dialogData = dialogData;
@@ -69,7 +73,9 @@ public class DialogPlayer : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
-    if (_idx >= _dialogData.Length-1) return;
+    if (_idx >= _dialogData.Length-1) {
+      _isDialogPlaying = false;
+    }
     if (_currentReplica.getIsEnded()) {
       _idx++;
       _currentReplica = createReplica();
