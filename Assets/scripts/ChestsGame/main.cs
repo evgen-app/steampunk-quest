@@ -15,12 +15,12 @@ public class main : MonoBehaviour
     [SerializeField] GameObject getLampButton;
 
 
-    ARRaycastManager raycastManager;
-    Text status;
-    bool spawnedchest = false;
-    bool search = true;
-    public List<ARRaycastHit> hits;
-    bool isTracking = false; //эта переменная state отслеживаемого лучем объекта
+    private ARRaycastManager raycastManager;
+    private Text status;
+    private bool spawnedchest = false;
+    private bool search = true;
+    private List<ARRaycastHit> hits;
+    private bool isTracking = false; //эта переменная state отслеживаемого лучем объекта
     GameObject rayRecObj;
     
     void Start()
@@ -85,7 +85,6 @@ public class main : MonoBehaviour
         RaycastHit raycastHit;
         if (Physics.Raycast(ray, out raycastHit) && GameObject.FindGameObjectsWithTag("aim").Length  == 0)
         {
-            status.text = "ray";
             if (raycastHit.collider.gameObject.tag == "lamp")
             {
                 rayRecObj = raycastHit.collider.gameObject;

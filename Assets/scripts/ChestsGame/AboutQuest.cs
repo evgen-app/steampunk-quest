@@ -47,15 +47,10 @@ public class AboutQuest : MonoBehaviour
 
         discr.text = phrases[index];
     }
-    // Start is called before the first frame update
     void Start()
     {
         discr.text = phrases[index];
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }

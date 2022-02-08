@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4500843177677021696}
   - component: {fileID: 4500843177677021697}
   m_Layer: 5
-  m_Name: openChest
+  m_Name: SampleBtn
   m_TagString: button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -120,19 +120,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4500843177677021696}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: main, Assembly-CSharp
-        m_MethodName: openBloha
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &4500843178914629199
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,6 +17,8 @@ TagManager:
   - tenpoints_tagget
   - lamp
   - status
+  - canvas_ui
+  - tool
   layers:
   - Default
   - TransparentFX

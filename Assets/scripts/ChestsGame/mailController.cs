@@ -26,14 +26,5 @@ public class mailController : MonoBehaviour
         mapDialog.SetActive(true);
 
     }
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
