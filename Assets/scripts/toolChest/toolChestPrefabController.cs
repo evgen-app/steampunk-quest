@@ -81,13 +81,12 @@ public class toolChestPrefabController : MonoBehaviour
 
     void Update()
     {
-        detectPLanes();
-        detectObjects();
-        /*        if (spawnChest == true)
-                {
-                    detectPLanes();
-                    detectObjects();
-                }*/
+
+        if (spawnChest == true)
+        {
+            detectPLanes();
+            detectObjects();
+        }
 
     }
     private void detectPLanes()
